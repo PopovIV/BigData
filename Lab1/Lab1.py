@@ -1,8 +1,8 @@
 import numpy
 from math import sqrt
-
+import random
 # CONSTANTS
-EPS = 1e-5
+EPS = 1e-1
 
 # Task 2 function
 # Return: two vectors x and y
@@ -15,7 +15,7 @@ def createVectors():
 # In: vector x, vector y
 # Return: vector z by two input vectors
 def buildVectorZ(x, y):
-    return [y[i] if i % 2 == 0 else x[i] for i in range(len(x))]
+    return [(y[int(i / 2)] if i % 2 == 0 else x[int((i-1) / 2)]) for i in range(len(x) + len(y))]
 
 # Function to calculate first norm
 # In: vector
@@ -69,14 +69,21 @@ def task3():
     print("z vector: ", z)
     print("Sorted z vector: ", sorted(z))
 
+def generateWeight(size):
+    ans = [random.uniform(0, 1) for i in range(size)]
+    ans = [x / sum(ans) for x in ans]
+    return ans
+
+
 # Task 4
 # Function to calculate norms of vectors
-# In: weight vector
 # Prints norms of x, y, z vectors
-def task4(weight):
+def task4():
     print("\nTask 4:")
     x, y = createVectors()
     z = buildVectorZ(x, y)
+
+    weight = generateWeight(len(x))
     print("Weight for norm", weight)
     print("x vector's first norm: ", firstNorm(x))
     print("x vector's second norm: ", secondNorm(x))
@@ -86,6 +93,8 @@ def task4(weight):
     print("y vector's second norm: ", secondNorm(y))
     print("y vector's weight norm: ", weightedNorm(y, weight))
 
+    weight = generateWeight(len(z))
+    print("Weight for norm", weight)
     print("z vector's first norm: ", firstNorm(z))
     print("z vector's second norm: ", secondNorm(z))
     print("z vector's weight norm: ", weightedNorm(z, weight))
@@ -94,8 +103,9 @@ def task4(weight):
 # Function to calculate factorial
 # In: integer
 # Prints factorial of number
-def task6(num):
+def task6():
     print("\nTask 6:")
+    num = int(input("Enter integer to calculate factorial:"))
     print("Factorial of {0} is {1}".format(num, numpy.math.factorial(num)))
 
 # Task 7
@@ -106,7 +116,7 @@ def task7():
     values = []
     string = str(input("Enter five numbers:"))
     try:
-        values = [float(x) for x in string.split(' ')]
+        values = [float(x) for x in string.split()]
     except:
         print("Error in parsing your input")
         return
@@ -121,6 +131,6 @@ def task7():
 if __name__ == "__main__":
     task2()
     task3()
-    task4([1/16 for i in range(16)])
-    task6(14)
+    task4()
+    task6()
     task7()
