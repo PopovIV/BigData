@@ -94,7 +94,6 @@ if __name__ == "__main__":
     print("Task 2: \n")
     model = generateModel()
     slide10 = slideMean(sample, 10)
-    print(slide10)
     slide25 = slideMean(sample, 25)
     slide55 = slideMean(sample, 55)
     plt.figure()
