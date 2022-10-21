@@ -98,9 +98,10 @@ if __name__ == "__main__":
     plt.figure()
     plt.title("Task 4")
     f = np.fft.fft(sample)
-    ampSpec = f.real * f.real + f.imag * f.imag
-    plt.plot([(i + 1) / sample.size * 2 * np.pi for i in range(sample.size)], ampSpec)
-    freq = (ampSpec[:180].argmax() + 1.0) / sample.size * 2.0 * np.pi
+    ampSpec = 2 / N * np.abs(f[:len(sample) // 2])
+    freqs = np.linspace(0, 1 / (2.0), len(sample) // 2)
+    plt.plot(freqs, ampSpec)
+    freq = freqs[np.argmax(ampSpec)]
     print(freq)
 
     # Task 5

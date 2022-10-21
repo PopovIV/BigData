@@ -72,6 +72,7 @@ def checkKandell(sample, trend):
     pSize = len(rotationPoints)
 
     print("Calculated rotation number's sum: ", pSize)
+    print("Kendell: ", (4 * pSize) / (N * (N - 1)) - 1)
     if pSize < pMean + pDisp and pSize > pMean - pDisp:
         print("\nRandomness\n")
     elif pSize > pMean + pDisp:

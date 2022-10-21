@@ -36,12 +36,7 @@ def prony(x: np.array, T: float):
 # Function to generate sample
 # Return sample from task 1
 def generateSample():
-    return np.array([sum([(k * np.exp(-h * i / k) * np.cos(4 * np.pi * k * h * i + np.pi / k)) for k in range(1, 4)]) for i in range(1, N + 1)])
-
-# Function to generate model
-def generateModel():
-    return np.array([np.sqrt(k * h) for k in range(N)])
-
+    return np.array([sum([(k * np.exp(-h * i / k) * np.cos(2 * np.pi * k * h * i + np.pi / 4.)) for k in range(1, 4)]) for i in range(1, N + 1)])
 
 # Function to calculate slide median points
 # In: sample, slide period
@@ -142,17 +137,17 @@ if __name__ == "__main__":
     # kandell says if ostatki is random
     checkKandell(trend, np.array(data['mean_temp']))
     #plt.show()
-    plt.figure()
+    #plt.figure()
     # regular coleb with fft
-    f = np.fft.fft(data['mean_temp'])
-    ff = f.real * f.real + f.imag * f.imag
-    sz = len(ff)
-    ff = ff[0:100]
-    plt.plot(ff)
-    plt.grid()
-    for delta in [1, 8]:
-        ff = ff[delta:100]
-        print(sz / ((ff.argmax() + delta)), "days")  
+    #f = np.fft.fft(data['mean_temp'])
+    #ff = f.real * f.real + f.imag * f.imag
+    #sz = len(ff)
+    #ff = ff[0:100]
+    #plt.plot(ff)
+    #plt.grid()
+    #for delta in [1, 8]:
+    #    ff = ff[delta:100]
+    #    print(sz / ((ff.argmax() + delta)), "days")  
 
     # calculate herst
     # Evaluate Hurst equation
