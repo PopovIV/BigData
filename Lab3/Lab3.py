@@ -62,7 +62,7 @@ def checkKandell(sample, trend):
     # Check for mean and normal
     print('mean ', tail.mean())
     print('standart devotion ', st.tstd(tail))
-    # 0.55
+    # 0.05 or 0.005
     print('probability of Normal = ', st.normaltest(tail)[1])
 
 
