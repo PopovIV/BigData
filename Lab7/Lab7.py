@@ -102,8 +102,6 @@ def init_polynome_regrestion_model(poly_degree : int, X : np.array, y : np.array
 
 def task_2(csv_path : str, poly_degree : int):
     X, y = init_data_from_table(csv_path)
-    print(X)
-    print(y)
     X, mlr = init_polynome_regrestion_model(poly_degree, X, y)
     output_linear_regrestion_errors(mlr.predict(X=X), y)
 

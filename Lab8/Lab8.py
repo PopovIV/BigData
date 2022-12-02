@@ -33,7 +33,7 @@ class PolyRegularRegression:
         return pol_x
 
 models = {
-    "crest": linear_model.Ridge,
+    "Ridge": linear_model.Ridge,
     "lasso": linear_model.Lasso
 }
 
@@ -64,7 +64,7 @@ for i, alfa in enumerate(alfas):
         model.fit(x, y + opt_nois)
         
         axs[j, i].plot(x_test, model.predict(x_test))
-        axs[j, i].plot(x, y, ".")
+        axs[j, i].plot(x, y, "rd", markersize=2)
         axs[j, i].set_title(name)
         axs[j, i].grid()
         
@@ -86,7 +86,7 @@ for i, nois in enumerate(noises):
         
         axs[j, i].grid()
         axs[j, i].plot(x_test, model.predict(x_test))
-        axs[j, i].plot(x, y, ".")
+        axs[j, i].plot(x, y, "rd", markersize=2)
         axs[j, i].set_title(name)
         params[name] = model.model.coef_
 plt.show()
