@@ -86,6 +86,12 @@ def init_data_from_table(csv_path : str):
     return X, y
 
 def init_polynome_regrestion_model(poly_degree : int, X : np.array, y : np.array):
+    print("line")
+    mlr = init_linear_regression(X, y)
+    print(mlr.coef_)
+    output_linear_regrestion_errors(mlr.predict(X=X), y)
+
+    print("poly")
     poly_reg = preprocessing.PolynomialFeatures(degree=poly_degree)
     X_poly = poly_reg.fit_transform(X)
     lr_model = linear_model.LinearRegression()
@@ -117,5 +123,5 @@ if __name__ == '__main__':
     POLY_DEGREE = 6
 
     # run main func
-    #task_1(SERIES_SIZE, VARIABLES_NUM, ORIGIN_X_DISTRIBUTION, ORIGIN_Y_DISTRIBUTION, NOISE_DISTR)
+    task_1(SERIES_SIZE, VARIABLES_NUM, ORIGIN_X_DISTRIBUTION, ORIGIN_Y_DISTRIBUTION, NOISE_DISTR)
     task_2(DATA_SRC, POLY_DEGREE)

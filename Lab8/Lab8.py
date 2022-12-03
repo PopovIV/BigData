@@ -69,10 +69,12 @@ for i, alfa in enumerate(alfas):
         axs[j, i].grid()
         
         params[name] = model.model.coef_
-plt.show()
+
 for name in params:
     params[name].apply(lambda x: None if x == 0. else x)
 print(params)
+plt.show()
+
 fig, axs = plt.subplots(len(models), len(noises))
 params = pd.DataFrame()
 
@@ -89,7 +91,8 @@ for i, nois in enumerate(noises):
         axs[j, i].plot(x, y, "rd", markersize=2)
         axs[j, i].set_title(name)
         params[name] = model.model.coef_
-plt.show()
+
 for name in params:
     params[name].apply(lambda x: None if x == 0. else x)
 print(params)
+plt.show()
